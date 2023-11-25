@@ -1,76 +1,66 @@
 
 # Data Loading
 
-Data loading in Python and loading top 1000 records in a separate .csv file in SQL
+Performing data loading in Python and exporting the top 1000 records into a distinct .csv file in SQL. 
 
 
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-## Prerequisites 
-The following are required in order to run this code in Python:
+These instructions will enable you to obtain and activate a duplicate of the project on your personal computer for the purpose of development and testing.   Refer to the deployment section for instructions on how to implement the project on a live system. 
 
-Set up Anaconda.
-Set up Jupiter notebook.
-Set up MSQL.
-Create a new userid and password in MySQL.
+## Prerequisites 
+The following prerequisites are necessary to execute this code in Python: 
+
+Install Anaconda. 
+Configure Jupiter notebook. 
+Configure MySQL. 
+Generate a fresh userid and password in MySQL. 
 
 
 ## Installing
-We use Jupiter notebook from the Anaconda package to work with Python. Post that we will install the required Python libraries to interact with MYSQL database and execute SQL queries. Then we will import the necessary libraries including Pandas, which is used to convert tables into dataframe and perform various operations. We will also import pymysql, to interact with MYSQL database.
+Jupiter notebook from Anaconda works with Python. We will then install Python libraries to communicate with MYSQL and conduct SQL queries. Next, we'll import Pandas, which converts tables into dataframes and does other operations. To interact with MYSQL, we'll import pymysql.
+
 ## Running the tests
-First we read the youtube_dataset csv file by creating a dataframe in pandas. 
+To start, we made a pandas dataframe and read the youtube_dataset.csv file into it. 
+Then we use the df.head() function to show the rows and columns and the df.info() function to find out what kind of dataset it is.
+Then, iloc is used to pick rows and columns from a DataFrame or Series based on where they are in the array instead of what they are named.
+results_table is used to get the dataframe's return value.
+Then we use top_1000 and df.iloc to choose rows from point 0 (inclusive) to 1000 (exclusive). This means we choose the first 1000 rows of the 4000 rows in the DataFrame.
+Lastly, the create_engine method is used to make a database engine that connects to the MySQL database that was given.
 
-Then we run tests to display the rows and columns, df.head(), get information about the type of dataset, df.info() function.
-
-Then iloc is used to choose rows and columns from a DataFrame or Series based on their integer location rather than their labels.
-
-results_table is used to return the output of the dataframe.
-
-Then top_1000 and df.iloc are used, and we select rows from position 0 (inclusive) to 1000 (exclusive), which means selecting the first 1000 rows of the total 4000 rows of the DataFrame.
-
-Lastly the create_engine function is used, to create a database engine, which will establish a connection to the specified MySQL database.
 
 ## Breakdown of end to end steps
 
-First we read the youtube_dataset csv file by creating a dataframe in pandas. 
+Create a pandas dataframe to read the youtube_dataset.csv file. 
+Using df.info(), we display all dataframe information. 
+The df.info() function displays Columns, Column number, data kinds (integer, object, etc.), and if any Columns have values or null values. Also shown is dataframe memory use.
+We enter a command to display the dataframe's rows and columns, revealing its shape.
+Df.head() displays the top five dataframe rows.
 
-Post that we display all the information related to the dataframe, using df.info() function. 
-
-The output of the df.info() function will display the Columns, Column number, the data types (integer, object etc.) and if the Columns have any values; it will also display if any Column has a null value. The memory usage of the dataframe is displayed as well.
-
-Then we input a command to display the number of rows and columns, which essentially shows the shape of the dataframe.
-
-Df.head() is used to display the top five rows of the dataframe.
 
 #### Calculating the distribution of Channel type
-To calculate the distribution of channel type, a function channeltype() is used. This function takes ‘data’ as an argument. Then iloc method is used to select the first 1000 records from the dataframe.
+Channeltype() calculates channel type distribution. This function accepts ‘data’. The iloc technique selects the first 1000 dataframe records.
 
-iloc in Python stands for "integer location" and is a method for selecting data by integer indexing. It is frequently used in conjunction with Pandas DataFrames. The basic goal of iloc is to allow you to choose rows and columns from a DataFrame or Series based on their integer location rather than their labels. The frequency distribution of the 'channeltype' values in the selected subset is calculated by distribution. Then it is converted in to percentages also for users to view the counts as well as percentage values. This output is displayed with three Columns – Channel Type, Count and Percentage.
+Python's "integer location" technique selects data by integer indexing. It often works with Pandas DataFrames. Iloc lets you choose rows and columns from a DataFrame or Series by integer location rather than label. Distribution calculates the selected subset's 'channeltype' frequency distribution. Also, it is converted to percentages so users may see counts and percentages. The output has three columns: Channel Type, Count, and Percentage.
 
-result_table returns the created DataFrame as the output of the function. When you call this function with a DataFrame, it will return a summary table showing the distribution of 'channeltype' values, their counts, and percentages within the first 1000 records of the input data.
+Function result_table returns the constructed DataFrame. With a DataFrame, this method returns a summary table of 'channeltype' values, counts, and percentages in the first 1000 rows of the incoming data.
 
 dis displays the values of the top 1000 rows of the dataframe.
 
-#### Loading top 1000 records into a separate CSV file, and to a database table
-By using top_1000 and df.iloc, we selected rows from position 0 (inclusive) to 1000 (exclusive), which means selecting the first 1000 rows of the total 4000 rows of the DataFrame.
+#### Filling a CSV file and database table with the top 1000 records
+We chose the first 1000 rows of the DataFrame's 4000 rows using top_1000 and df.iloc.
+Then we save the dataframe as CSV.
+This code saves the DataFrame top_1000 to "top_1000_channels.csv" in the current working directory. This CSV file can be analyzed, shared, or fed into other programs. Pandas does not write row names (index) to the CSV file when set to False. If you remove this parameter or set it to True (the default), the CSV file's first column will be row names.
 
-Then we Save the dataframe to a CSV file.
+The result's row and column count is shown subsequently.
 
-This code is used to take the DataFrame top_1000 and save it to a CSV file named "top_1000_channels.csv" in the current working directory. This CSV file can then be used for further analysis, sharing with others, or as input for other programs. In the above code When set to False it tells Pandas not to write row names (index) to the CSV file. If you omit this parameter or set it to True (which is the default), the row names will be included as the first column in the CSV file.
 
-The shape of the result, as in the number of rows and columns is displayed later.
+####MySQL server connection
+Our connection URL includes the database type, username, password, host, and name. The create_engine function created a database engine to connect to the MySQL database. You can use the engine to access the database.
 
-#### Connection with MySQL server
-We created a connection URL that specifies the database type, username, password, host and the name of the database. We used the create_engine function to create a database engine, which will establish a connection to the specified MySQL database. The engine will allow you to interact with the database.
+•'mysql+pymysql' specifies MySQL database dialect and Python MySQL driver.
+•Calling database con=engine connects us to the database.
 
-•	'mysql+pymysql' specifies the database dialect (MySQL) and the Python MySQL database driver (PyMySQL).
-•	'group10' is the username
-•	'assig***' represents the password
-•	'localho***' is the database host (can be an IP address or a domain name
-•	'assig***' is the name of the database you want to connect with
-•	Then we establish a connection to the database by calling the database con=engine
-
-Following these steps we are successfully able to load the CSV file in a database created on the MySQL server. 
+Following these procedures, we may load the CSV file into a MySQL database. 
 
 ## Deployment
 There was no real-time deployment of this project. This project was a test to run a code for school. 
@@ -79,19 +69,17 @@ There was no real-time deployment of this project. This project was a test to ru
 Contributions are always welcome! 
 
 The following members contributed to this project:
-ramidkc
-jillshah
-niteshtalukdar
+PANKAJ
+PARTH
+JOHNSON
 
-See `contributing.md` for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
 
 ## Authors
 
-- [UzmaGithub](https://www.github.com/UzmaGithub)
-
+RAHIL CHOPDA
 Professor Omar Altrad
 ## License
 
@@ -102,9 +90,5 @@ License to use by Durham College
 
 Prof. Omar Altrad
 
-Rami D KC
-
-Jill Shah
-
-Nitesh Talukdar
-
+PANKAJ SHARMA 
+RAHIL CHOPDA
