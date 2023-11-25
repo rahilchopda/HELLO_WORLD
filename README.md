@@ -1,7 +1,7 @@
 
 # Data Loading
 
-Performing data loading in Python and exporting the top 1000 records into a distinct .csv file in SQL. 
+Performing data loading in Python and exporting the sales pre and post 2005 into a distinct .csv file in SQL. 
 
 
 ## Getting Started
@@ -20,7 +20,7 @@ Generate a fresh userid and password in MySQL.
 Jupiter notebook from Anaconda works with Python. We will then install Python libraries to communicate with MYSQL and conduct SQL queries. Next, we'll import Pandas, which converts tables into dataframes and does other operations. To interact with MYSQL, we'll import pymysql.
 
 ## Running the tests
-To start, we made a pandas dataframe and read the youtube_dataset.csv file into it. 
+To start, we made a pandas dataframe and read the vgsales.csv file into it. 
 Then we use the df.head() function to show the rows and columns and the df.info() function to find out what kind of dataset it is.
 Then, iloc is used to pick rows and columns from a DataFrame or Series based on where they are in the array instead of what they are named.
 results_table is used to get the dataframe's return value.
@@ -30,7 +30,7 @@ Lastly, the create_engine method is used to make a database engine that connects
 
 ## Breakdown of end to end steps
 
-Create a pandas dataframe to read the youtube_dataset.csv file. 
+Create a pandas dataframe to read the vgsales.csv file. 
 Using df.info(), we display all dataframe information. 
 The df.info() function displays Columns, Column number, data kinds (integer, object, etc.), and if any Columns have values or null values. Also shown is dataframe memory use.
 We enter a command to display the dataframe's rows and columns, revealing its shape.
